@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>计算器</title>
+    <script language="javascript">
+        var num1,num2;
+        function  validate(num1,num2){ //判断是否完整填写条件
+            var isCompute = false;
+            if(num1 ==""){
+                alert("请输入第一个数");
+            }else if(isNaN(num1)){
+                alert("请输入数字");
+            }
+            else if(num2 ==""){
+                alert("请输入第二个数");
+            }
+            else if(isNaN(num2)){
+                alert("请输入数字");
+            }
+            else{
+                isCompute = true;
+            }
+            return isCompute;
+        }
+
+        function compute(op){//进行运算
+            var num1 = document.frmCalc.first.value;
+            var num2 = document.frmCalc.second.value;
+            if(validate(num1,num2)){
+                num1 = parseInt(num1);
+                num2 = parseInt(num2);
+                result = document.frmCalc.result;
+                switch(op){
+                    case "+": result.value = num1 + num2; break;
+                    case "-": value = num1 - num2; break;
+                    case "*": value = num1 * num2; break;
+                    case "/": value = num1 / num2; break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="" method="post" name="frmCalc">
+    <table name="calc" style="border:thin; border-style:solid; background-color:#00FF66; text-align:center">
+        <tr>
+            <td colspan="4"><h1>简易计算器</h1></td>
+        </tr>
+        <tr>
+            <td>第一个数</td>
+            <td colspan="3"><input type="text" name="first" id="first" />
+            </td>
+        </tr>
+        <td>第二个数</td>
+        <td colspan="3"><input type="text" name="second" id="second" />
+        </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="&nbsp;&nbsp;+&nbsp;&nbsp;" name="add" id="add" onclick="compute('+')"/></td>
+            <td><input type="button" value="&nbsp;&nbsp;-&nbsp;&nbsp;" name="minus" id="minus" onclick="compute('-')"/></td>
+            <td><input type="button" value="&nbsp;&nbsp;*&nbsp;&nbsp;" name="mult" id="mult" onclick="compute('*')"/></td>
+            <td><input type="button" value="&nbsp;&nbsp;/&nbsp;&nbsp;" name="division" id="division" onclick="compute('/')"/></td>
+        </tr>
+        <tr>
+            <td>计算结果</td>
+            <td colspan="3"><input type="text" name="result" id="result" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
